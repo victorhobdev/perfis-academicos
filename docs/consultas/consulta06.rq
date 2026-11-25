@@ -1,0 +1,11 @@
+PREFIX acad: <../ontologia.ttl#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?pessoa ?unidade WHERE {
+  VALUES ?u { <../recursos.html#unidade-exatas> }
+  ?p schema:name ?pessoa ;
+     (acad:departamento|acad:curso)/acad:unidade ?u .
+  ?u a acad:Unidade ;
+     schema:name ?unidade .
+}
+ORDER BY ?pessoa

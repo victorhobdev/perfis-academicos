@@ -1,0 +1,11 @@
+PREFIX acad: <../ontologia.ttl#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?discente ?curso WHERE {
+  VALUES ?c { <../recursos.html#curso-sistemas> }
+  ?p a acad:Discente ;
+     schema:name ?discente ;
+     acad:curso ?c .
+  ?c schema:name ?curso .
+}
+ORDER BY ?discente

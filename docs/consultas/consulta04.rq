@@ -1,0 +1,14 @@
+PREFIX acad: <../ontologia.ttl#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?projeto ?docente ?discente WHERE {
+  ?d a acad:Docente ;
+     schema:name ?docente ;
+     acad:participaDe ?p .
+  ?e a acad:Discente ;
+     schema:name ?discente ;
+     acad:participaDe ?p .
+  ?p a acad:ProjetoPesquisa ;
+     schema:name ?projeto .
+}
+ORDER BY ?projeto ?docente ?discente

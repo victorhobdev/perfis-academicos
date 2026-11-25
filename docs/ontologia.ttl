@@ -1,0 +1,102 @@
+@prefix acad: <ontologia.ttl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<ontologia.ttl> a owl:Ontology ;
+    dct:title "Ontologia de perfis acadêmicos"@pt-BR ;
+    dct:license <https://creativecommons.org/publicdomain/zero/1.0/> .
+
+acad:PessoaAcademica a owl:Class ;
+    rdfs:label "Pessoa acadêmica"@pt-BR ;
+    rdfs:subClassOf schema:Person .
+
+acad:Docente a owl:Class ;
+    rdfs:label "Docente"@pt-BR ;
+    owl:disjointWith acad:Discente ;
+    rdfs:subClassOf acad:PessoaAcademica ,
+        [ a owl:Restriction ; owl:onProperty acad:departamento ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+acad:Discente a owl:Class ;
+    rdfs:label "Discente"@pt-BR ;
+    rdfs:subClassOf acad:PessoaAcademica ,
+        [ a owl:Restriction ; owl:onProperty acad:curso ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+acad:Unidade a owl:Class ;
+    rdfs:label "Unidade acadêmica"@pt-BR ;
+    rdfs:subClassOf schema:Organization .
+
+acad:Departamento a owl:Class ;
+    rdfs:label "Departamento"@pt-BR ;
+    rdfs:subClassOf schema:Organization .
+
+acad:Curso a owl:Class ;
+    rdfs:label "Curso de graduação"@pt-BR .
+
+acad:Area a owl:Class ;
+    rdfs:label "Área temática"@pt-BR ;
+    rdfs:subClassOf skos:Concept .
+
+acad:Disciplina a owl:Class ;
+    rdfs:label "Disciplina"@pt-BR .
+
+acad:GrupoPesquisa a owl:Class ;
+    rdfs:label "Grupo de pesquisa"@pt-BR ;
+    rdfs:subClassOf schema:Organization .
+
+acad:ProjetoPesquisa a owl:Class ;
+    rdfs:label "Projeto de pesquisa"@pt-BR .
+
+acad:Producao a owl:Class ;
+    rdfs:label "Produção acadêmica"@pt-BR ;
+    rdfs:subClassOf schema:CreativeWork .
+
+acad:Artigo a owl:Class ;
+    rdfs:label "Artigo acadêmico"@pt-BR ;
+    rdfs:subClassOf acad:Producao, schema:ScholarlyArticle .
+
+acad:departamento a owl:ObjectProperty ;
+    rdfs:domain acad:Docente ; rdfs:range acad:Departamento .
+
+acad:curso a owl:ObjectProperty ;
+    rdfs:domain acad:Discente ; rdfs:range acad:Curso .
+
+acad:unidade a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf (acad:Departamento acad:Curso) ] ;
+    rdfs:range acad:Unidade .
+
+acad:area a owl:ObjectProperty ;
+    rdfs:domain acad:PessoaAcademica ; rdfs:range acad:Area .
+
+acad:disciplina a owl:ObjectProperty ;
+    rdfs:domain acad:PessoaAcademica ; rdfs:range acad:Disciplina .
+
+acad:grupo a owl:ObjectProperty ;
+    rdfs:subPropertyOf schema:memberOf ;
+    rdfs:domain acad:PessoaAcademica ; rdfs:range acad:GrupoPesquisa .
+
+acad:participaDe a owl:ObjectProperty ;
+    rdfs:domain acad:PessoaAcademica ; rdfs:range acad:ProjetoPesquisa .
+
+acad:autor a owl:ObjectProperty ;
+    rdfs:subPropertyOf schema:author ;
+    rdfs:domain acad:Producao ; rdfs:range acad:PessoaAcademica .
+
+acad:formacao a owl:DatatypeProperty ;
+    rdfs:domain acad:PessoaAcademica ; rdfs:range xsd:string .
+
+acad:ingresso a owl:DatatypeProperty ;
+    rdfs:domain acad:Discente ; rdfs:range xsd:gYear .
+
+acad:ano a owl:DatatypeProperty ;
+    rdfs:domain acad:Producao ; rdfs:range xsd:gYear .
+
+acad:portalAcademico a owl:ObjectProperty ;
+    rdfs:domain acad:PessoaAcademica ;
+    rdfs:comment "Portal de referência exibido no perfil acadêmico."@pt-BR .

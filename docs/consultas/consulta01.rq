@@ -1,0 +1,11 @@
+PREFIX acad: <../ontologia.ttl#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?docente ?departamento ?unidade WHERE {
+  ?p a acad:Docente ;
+     schema:name ?docente ;
+     acad:departamento ?d .
+  ?d schema:name ?departamento ;
+     acad:unidade/schema:name ?unidade .
+}
+ORDER BY ?docente

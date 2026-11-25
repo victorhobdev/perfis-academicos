@@ -1,0 +1,17 @@
+PREFIX acad: <../ontologia.ttl#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?publicacao ?ano ?coautor WHERE {
+  VALUES ?d { <../perfis/ana-martins.html> }
+  ?d a acad:Docente .
+  ?p a acad:Artigo ;
+     schema:name ?publicacao ;
+     acad:ano ?ano ;
+     acad:autor ?d .
+  OPTIONAL {
+    ?p acad:autor ?outro .
+    FILTER(?outro != ?d)
+    ?outro schema:name ?coautor .
+  }
+}
+ORDER BY ?ano ?publicacao ?coautor

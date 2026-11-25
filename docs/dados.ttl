@@ -1,0 +1,165 @@
+@prefix acad: <ontologia.ttl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<dados.ttl> a dcat:Dataset ;
+    dct:conformsTo <ontologia.ttl> ;
+    dct:description "A universidade, os cursos e as unidades seguem a estrutura da UFRRJ. Os perfis pessoais, vínculos individuais e produções são fictícios e foram criados para o trabalho de Web Semântica."@pt-BR ;
+    dct:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dct:modified "2026-11-25"^^xsd:date ;
+    dct:source <dados.json> ;
+    dct:title "Diretório de perfis acadêmicos"@pt-BR .
+
+<recursos.html#producao-acervo> a acad:Producao ;
+    acad:ano "2025"^^xsd:gYear ;
+    acad:autor <perfis/luiza-rocha.html> ;
+    schema:name "Classificação de documentos do acervo"@pt-BR .
+
+<recursos.html#producao-dados> a acad:Artigo ;
+    acad:ano "2024"^^xsd:gYear ;
+    acad:autor <perfis/ana-martins.html>,
+        <perfis/bruno-ribeiro.html> ;
+    schema:name "Integração de dados acadêmicos com RDF"@pt-BR .
+
+<recursos.html#producao-prototipo> a acad:Producao ;
+    acad:ano "2025"^^xsd:gYear ;
+    acad:autor <perfis/joao-mendes.html> ;
+    schema:name "Protótipo de catálogo acadêmico"@pt-BR .
+
+<recursos.html#producao-vocabularios> a acad:Artigo ;
+    acad:ano "2025"^^xsd:gYear ;
+    acad:autor <perfis/ana-martins.html> ;
+    schema:name "Vocabulários para diretórios acadêmicos"@pt-BR .
+
+<perfis/bruno-ribeiro.html> a acad:Docente ;
+    acad:area <recursos.html#area-dados-abertos>,
+        <recursos.html#area-ia> ;
+    acad:departamento <recursos.html#departamento-computacao> ;
+    acad:disciplina <recursos.html#disciplina-ia> ;
+    acad:formacao "Doutorado em Ciência da Computação (2020)",
+        "Mestrado em Informática (2015)" ;
+    acad:grupo <recursos.html#grupo-sistemas> ;
+    acad:participaDe <recursos.html#projeto-ia> ;
+    acad:portalAcademico <https://orcid.org/> ;
+    schema:affiliation <recursos.html#instituicao> ;
+    schema:description "Trabalha com classificação de documentos e recuperação de informação. Coordena atividades de pesquisa sobre inteligência artificial aplicada a acervos."@pt-BR ;
+    schema:jobTitle "Professor adjunto"@pt-BR ;
+    schema:name "Bruno Ribeiro Costa"@pt-BR .
+
+<perfis/joao-mendes.html> a acad:Discente ;
+    acad:area <recursos.html#area-dados-abertos>,
+        <recursos.html#area-web-semantica> ;
+    acad:curso <recursos.html#curso-sistemas> ;
+    acad:disciplina <recursos.html#disciplina-banco-de-dados> ;
+    acad:formacao "Bacharelado em Sistemas de Informação (em andamento)" ;
+    acad:grupo <recursos.html#grupo-dados> ;
+    acad:ingresso "2024"^^xsd:gYear ;
+    acad:participaDe <recursos.html#projeto-dados> ;
+    acad:portalAcademico <https://lattes.cnpq.br/> ;
+    schema:affiliation <recursos.html#instituicao> ;
+    schema:description "Estuda integração de dados e desenvolvimento web. Participa de um projeto para organizar e publicar dados acadêmicos."@pt-BR ;
+    schema:jobTitle "Estudante de graduação"@pt-BR ;
+    schema:name "João Mendes Pereira"@pt-BR .
+
+<perfis/luiza-rocha.html> a acad:Discente ;
+    acad:area <recursos.html#area-ia> ;
+    acad:curso <recursos.html#curso-computacao> ;
+    acad:disciplina <recursos.html#disciplina-ia> ;
+    acad:formacao "Bacharelado em Ciência da Computação (em andamento)" ;
+    acad:grupo <recursos.html#grupo-sistemas> ;
+    acad:ingresso "2025"^^xsd:gYear ;
+    acad:participaDe <recursos.html#projeto-ia> ;
+    acad:portalAcademico <https://orcid.org/> ;
+    schema:affiliation <recursos.html#instituicao> ;
+    schema:description "Tem interesse em aprendizado de máquina e organização de acervos. Colabora com a avaliação de um classificador de documentos."@pt-BR ;
+    schema:jobTitle "Estudante de graduação"@pt-BR ;
+    schema:name "Luiza Rocha Almeida"@pt-BR .
+
+<recursos.html#curso-computacao> a acad:Curso ;
+    acad:unidade <recursos.html#unidade-multidisciplinar> ;
+    schema:name "Ciência da Computação"@pt-BR .
+
+<recursos.html#curso-sistemas> a acad:Curso ;
+    acad:unidade <recursos.html#unidade-exatas> ;
+    schema:name "Sistemas de Informação"@pt-BR .
+
+<recursos.html#disciplina-web-semantica> a acad:Disciplina ;
+    schema:name "Web Semântica"@pt-BR .
+
+<recursos.html#unidade-multidisciplinar> a acad:Unidade ;
+    schema:name "Instituto Multidisciplinar"@pt-BR ;
+    schema:parentOrganization <recursos.html#instituicao> .
+
+<perfis/ana-martins.html> a acad:Docente ;
+    acad:area <recursos.html#area-dados-abertos>,
+        <recursos.html#area-web-semantica> ;
+    acad:departamento <recursos.html#departamento-computacao> ;
+    acad:disciplina <recursos.html#disciplina-banco-de-dados>,
+        <recursos.html#disciplina-web-semantica> ;
+    acad:formacao "Doutorado em Ciência da Computação (2018)",
+        "Graduação em Sistemas de Informação (2009)",
+        "Mestrado em Informática (2012)" ;
+    acad:grupo <recursos.html#grupo-dados> ;
+    acad:participaDe <recursos.html#projeto-dados> ;
+    acad:portalAcademico <https://lattes.cnpq.br/>,
+        <https://orcid.org/> ;
+    schema:affiliation <recursos.html#instituicao> ;
+    schema:description "Pesquisa representação de conhecimento e dados abertos. Orienta trabalhos sobre integração de informação acadêmica com tecnologias da Web Semântica."@pt-BR ;
+    schema:jobTitle "Professora associada"@pt-BR ;
+    schema:name "Ana Martins da Silva"@pt-BR .
+
+<recursos.html#area-ia> a acad:Area ;
+    skos:closeMatch <https://www.wikidata.org/entity/Q11660> ;
+    skos:inScheme <recursos.html#areas> ;
+    skos:prefLabel "Inteligência Artificial"@pt-BR ;
+    schema:name "Inteligência Artificial"@pt-BR .
+
+<recursos.html#area-web-semantica> a acad:Area ;
+    skos:closeMatch <https://www.wikidata.org/entity/Q54837> ;
+    skos:inScheme <recursos.html#areas> ;
+    skos:prefLabel "Web Semântica"@pt-BR ;
+    schema:name "Web Semântica"@pt-BR .
+
+<recursos.html#departamento-computacao> a acad:Departamento ;
+    acad:unidade <recursos.html#unidade-exatas> ;
+    schema:name "Departamento de Computação"@pt-BR .
+
+<recursos.html#disciplina-banco-de-dados> a acad:Disciplina ;
+    schema:name "Banco de Dados"@pt-BR .
+
+<recursos.html#disciplina-ia> a acad:Disciplina ;
+    schema:name "Inteligência Artificial"@pt-BR .
+
+<recursos.html#grupo-dados> a acad:GrupoPesquisa ;
+    schema:name "Grupo de Pesquisa em Dados Abertos"@pt-BR .
+
+<recursos.html#grupo-sistemas> a acad:GrupoPesquisa ;
+    schema:name "Grupo de Pesquisa em Sistemas Inteligentes"@pt-BR .
+
+<recursos.html#projeto-dados> a acad:ProjetoPesquisa ;
+    schema:description "Representação e publicação de dados de perfis acadêmicos."@pt-BR ;
+    schema:name "Dados Abertos Acadêmicos"@pt-BR .
+
+<recursos.html#projeto-ia> a acad:ProjetoPesquisa ;
+    schema:description "Classificação experimental de documentos do acervo universitário."@pt-BR ;
+    schema:name "IA no Acervo Universitário"@pt-BR .
+
+<recursos.html#unidade-exatas> a acad:Unidade ;
+    schema:name "Instituto de Ciências Exatas"@pt-BR ;
+    schema:parentOrganization <recursos.html#instituicao> .
+
+<recursos.html#area-dados-abertos> a acad:Area ;
+    skos:closeMatch <https://www.wikidata.org/entity/Q309901> ;
+    skos:inScheme <recursos.html#areas> ;
+    skos:prefLabel "Dados Abertos"@pt-BR ;
+    schema:name "Dados Abertos"@pt-BR .
+
+<recursos.html#areas> a skos:ConceptScheme ;
+    skos:prefLabel "Áreas temáticas do diretório"@pt-BR .
+
+<recursos.html#instituicao> a schema:CollegeOrUniversity ;
+    schema:name "Universidade Federal Rural do Rio de Janeiro (UFRRJ)"@pt-BR .
+

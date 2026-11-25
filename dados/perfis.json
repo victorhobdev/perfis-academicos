@@ -1,0 +1,97 @@
+{
+  "instituicao": "Universidade Federal Rural do Rio de Janeiro (UFRRJ)",
+  "atualizadoEm": "2026-11-25",
+  "fonte": "A universidade, os cursos e as unidades seguem a estrutura da UFRRJ. Os perfis pessoais, vínculos individuais e produções são fictícios e foram criados para o trabalho de Web Semântica.",
+  "licenca": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "unidades": {
+    "unidade-exatas": "Instituto de Ciências Exatas",
+    "unidade-multidisciplinar": "Instituto Multidisciplinar"
+  },
+  "departamentos": {
+    "departamento-computacao": {"nome": "Departamento de Computação", "unidade": "unidade-exatas"}
+  },
+  "cursos": {
+    "curso-sistemas": {"nome": "Sistemas de Informação", "unidade": "unidade-exatas"},
+    "curso-computacao": {"nome": "Ciência da Computação", "unidade": "unidade-multidisciplinar"}
+  },
+  "areas": {
+    "area-web-semantica": {"nome": "Web Semântica", "wikidata": "https://www.wikidata.org/entity/Q54837"},
+    "area-dados-abertos": {"nome": "Dados Abertos", "wikidata": "https://www.wikidata.org/entity/Q309901"},
+    "area-ia": {"nome": "Inteligência Artificial", "wikidata": "https://www.wikidata.org/entity/Q11660"}
+  },
+  "disciplinas": {
+    "disciplina-web-semantica": "Web Semântica",
+    "disciplina-banco-de-dados": "Banco de Dados",
+    "disciplina-ia": "Inteligência Artificial"
+  },
+  "grupos": {
+    "grupo-sistemas": "Grupo de Pesquisa em Sistemas Inteligentes",
+    "grupo-dados": "Grupo de Pesquisa em Dados Abertos"
+  },
+  "projetos": {
+    "projeto-dados": {"nome": "Dados Abertos Acadêmicos", "descricao": "Representação e publicação de dados de perfis acadêmicos."},
+    "projeto-ia": {"nome": "IA no Acervo Universitário", "descricao": "Classificação experimental de documentos do acervo universitário."}
+  },
+  "producoes": {
+    "producao-dados": {"nome": "Integração de dados acadêmicos com RDF", "tipo": "Artigo", "ano": 2024, "autores": ["ana-martins", "bruno-ribeiro"]},
+    "producao-vocabularios": {"nome": "Vocabulários para diretórios acadêmicos", "tipo": "Artigo", "ano": 2025, "autores": ["ana-martins"]},
+    "producao-prototipo": {"nome": "Protótipo de catálogo acadêmico", "tipo": "Trabalho acadêmico", "ano": 2025, "autores": ["joao-mendes"]},
+    "producao-acervo": {"nome": "Classificação de documentos do acervo", "tipo": "Trabalho acadêmico", "ano": 2025, "autores": ["luiza-rocha"]}
+  },
+  "perfis": {
+    "ana-martins": {
+      "nome": "Ana Martins da Silva",
+      "tipo": "Docente",
+      "funcao": "Professora associada",
+      "departamento": "departamento-computacao",
+      "apresentacao": "Pesquisa representação de conhecimento e dados abertos. Orienta trabalhos sobre integração de informação acadêmica com tecnologias da Web Semântica.",
+      "formacao": ["Doutorado em Ciência da Computação (2018)", "Mestrado em Informática (2012)", "Graduação em Sistemas de Informação (2009)"],
+      "areas": ["area-web-semantica", "area-dados-abertos"],
+      "disciplinas": ["disciplina-web-semantica", "disciplina-banco-de-dados"],
+      "grupos": ["grupo-dados"],
+      "projetos": ["projeto-dados"],
+      "links": {"ORCID (portal)": "https://orcid.org/", "Currículo Lattes (portal)": "https://lattes.cnpq.br/"}
+    },
+    "bruno-ribeiro": {
+      "nome": "Bruno Ribeiro Costa",
+      "tipo": "Docente",
+      "funcao": "Professor adjunto",
+      "departamento": "departamento-computacao",
+      "apresentacao": "Trabalha com classificação de documentos e recuperação de informação. Coordena atividades de pesquisa sobre inteligência artificial aplicada a acervos.",
+      "formacao": ["Doutorado em Ciência da Computação (2020)", "Mestrado em Informática (2015)"],
+      "areas": ["area-ia", "area-dados-abertos"],
+      "disciplinas": ["disciplina-ia"],
+      "grupos": ["grupo-sistemas"],
+      "projetos": ["projeto-ia"],
+      "links": {"ORCID (portal)": "https://orcid.org/"}
+    },
+    "joao-mendes": {
+      "nome": "João Mendes Pereira",
+      "tipo": "Discente",
+      "funcao": "Estudante de graduação",
+      "curso": "curso-sistemas",
+      "ingresso": 2024,
+      "apresentacao": "Estuda integração de dados e desenvolvimento web. Participa de um projeto para organizar e publicar dados acadêmicos.",
+      "formacao": ["Bacharelado em Sistemas de Informação (em andamento)"],
+      "areas": ["area-dados-abertos", "area-web-semantica"],
+      "disciplinas": ["disciplina-banco-de-dados"],
+      "grupos": ["grupo-dados"],
+      "projetos": ["projeto-dados"],
+      "links": {"Currículo Lattes (portal)": "https://lattes.cnpq.br/"}
+    },
+    "luiza-rocha": {
+      "nome": "Luiza Rocha Almeida",
+      "tipo": "Discente",
+      "funcao": "Estudante de graduação",
+      "curso": "curso-computacao",
+      "ingresso": 2025,
+      "apresentacao": "Tem interesse em aprendizado de máquina e organização de acervos. Colabora com a avaliação de um classificador de documentos.",
+      "formacao": ["Bacharelado em Ciência da Computação (em andamento)"],
+      "areas": ["area-ia"],
+      "disciplinas": ["disciplina-ia"],
+      "grupos": ["grupo-sistemas"],
+      "projetos": ["projeto-ia"],
+      "links": {"ORCID (portal)": "https://orcid.org/"}
+    }
+  }
+}

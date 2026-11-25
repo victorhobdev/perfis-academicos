@@ -1,0 +1,26 @@
+<section class="profile-heading" aria-labelledby="nome">
+  <div class="profile-photo profile-initials" aria-hidden="true">${iniciais}</div>
+  <div>
+    <p class="eyebrow">Perfil de ${tipo}</p>
+    <h1 id="nome">${nome}</h1>
+    <p class="role">${funcao}</p>
+    <p class="quick-info">${vinculo}</p>
+  </div>
+</section>
+<div class="layout">
+  <div>
+    ${secoes}
+  </div>
+  <aside>
+    <section class="card">
+      <h2>Vínculo institucional</h2>
+      <dl class="contact-list">
+        <div><dt>Instituição</dt><dd>${instituicao}</dd></div>
+        <div><dt>Unidade</dt><dd>${unidade}</dd></div>
+        <div><dt>${vinculo_tipo}</dt><dd>${vinculo_link}</dd></div>
+        ${ingresso}
+      </dl>
+    </section>
+    ${links}
+  </aside>
+</div>

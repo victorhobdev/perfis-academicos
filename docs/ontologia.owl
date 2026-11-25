@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  
+   xmlns:dct="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="ontologia.ttl#Curso">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Curso de graduação</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#departamento">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#Docente"/>
+    <rdfs:range rdf:resource="ontologia.ttl#Departamento"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b5">
+    <rdf:first rdf:resource="ontologia.ttl#Curso"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#disciplina">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:range rdf:resource="ontologia.ttl#Disciplina"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#autor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="https://schema.org/author"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#Producao"/>
+    <rdfs:range rdf:resource="ontologia.ttl#PessoaAcademica"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#ano">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#Producao"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#PessoaAcademica">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Pessoa acadêmica</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://schema.org/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Departamento">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Departamento</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://schema.org/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#ingresso">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#Discente"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Artigo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Artigo acadêmico</rdfs:label>
+    <rdfs:subClassOf rdf:resource="ontologia.ttl#Producao"/>
+    <rdfs:subClassOf rdf:resource="https://schema.org/ScholarlyArticle"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dct:title xml:lang="pt-BR">Ontologia de perfis acadêmicos</dct:title>
+    <dct:license rdf:resource="https://creativecommons.org/publicdomain/zero/1.0/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Discente">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Discente</rdfs:label>
+    <rdfs:subClassOf rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:subClassOf rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#grupo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="https://schema.org/memberOf"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:range rdf:resource="ontologia.ttl#GrupoPesquisa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Unidade">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Unidade acadêmica</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://schema.org/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#formacao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Docente">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Docente</rdfs:label>
+    <owl:disjointWith rdf:resource="ontologia.ttl#Discente"/>
+    <rdfs:subClassOf rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:subClassOf rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#portalAcademico">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:comment xml:lang="pt-BR">Portal de referência exibido no perfil acadêmico.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Disciplina">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Disciplina</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="ontologia.ttl#curso"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b4">
+    <rdf:first rdf:resource="ontologia.ttl#Departamento"/>
+    <rdf:rest rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#curso">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#Discente"/>
+    <rdfs:range rdf:resource="ontologia.ttl#Curso"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Area">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Área temática</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#unidade">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b3"/>
+    <rdfs:range rdf:resource="ontologia.ttl#Unidade"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#area">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:range rdf:resource="ontologia.ttl#Area"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#GrupoPesquisa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Grupo de pesquisa</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://schema.org/Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n4a401aaaa40948a7bdc53d535f35c0e0b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="ontologia.ttl#departamento"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#participaDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="ontologia.ttl#PessoaAcademica"/>
+    <rdfs:range rdf:resource="ontologia.ttl#ProjetoPesquisa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#Producao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Produção acadêmica</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://schema.org/CreativeWork"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ontologia.ttl#ProjetoPesquisa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt-BR">Projeto de pesquisa</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

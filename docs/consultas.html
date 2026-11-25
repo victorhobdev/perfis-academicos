@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Diretório de perfis acadêmicos do trabalho de Web Semântica.">
+  <title>Consultas SPARQL | Universidade Federal Rural do Rio de Janeiro (UFRRJ)</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="alternate" type="text/turtle" href="dados.ttl" title="Dados RDF">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="index.html">Universidade Federal Rural do Rio de Janeiro (UFRRJ)</a>
+      <nav aria-label="Navegação principal">
+        <a href="index.html">Perfis</a>
+        <a href="recursos.html">Recursos do grafo</a>
+        <a href="consultas.html">Consultas SPARQL</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Consultas SPARQL</h1>
+<p class="role">Resultados gerados pelo RDFLib a partir do arquivo dados.ttl.</p>
+<section class="card"><h2>Quais são os docentes cadastrados e seus departamentos ou unidades?</h2><p>Parte de Docente, segue departamento até Departamento e unidade até Unidade.</p><p><a href="consultas/consulta01.rq">Arquivo SPARQL</a> · <a href="consultas/resultados/consulta01.csv">Resultado CSV</a></p><details><summary>Ver consulta</summary><pre><code>PREFIX acad: &lt;../ontologia.ttl#&gt;
+PREFIX schema: &lt;https://schema.org/&gt;
+
+SELECT ?docente ?departamento ?unidade WHERE {
+  ?p a acad:Docente ;
+     schema:name ?docente ;
+     acad:departamento ?d .
+  ?d schema:name ?departamento ;
+     acad:unidade/schema:name ?unidade .
+}
+ORDER BY ?docente
+</code></pre></details><div class="table-scroll"><table><thead><tr><th scope='col'>docente</th><th scope='col'>departamento</th><th scope='col'>unidade</th></tr></thead><tbody><tr><td>Ana Martins da Silva</td><td>Departamento de Computação</td><td>Instituto de Ciências Exatas</td></tr><tr><td>Bruno Ribeiro Costa</td><td>Departamento de Computação</td><td>Instituto de Ciências Exatas</td></tr></tbody></table></div></section>
+<section class="card"><h2>Quais discentes pertencem a determinado curso?</h2><p>Seleciona o Curso de Sistemas de Informação pelo seu IRI e usa curso para localizar instâncias de Discente.</p><p><a href="consultas/consulta02.rq">Arquivo SPARQL</a> · <a href="consultas/resultados/consulta02.csv">Resultado CSV</a></p><details><summary>Ver consulta</summary><pre><code>PREFIX acad: &lt;../ontologia.ttl#&gt;
+PREFIX schema: &lt;https://schema.org/&gt;
+
+SELECT ?discente ?curso WHERE {
+  VALUES ?c { &lt;../recursos.html#curso-sistemas&gt; }
+  ?p a acad:Discente ;
+     schema:name ?discente ;
+     acad:curso ?c .
+  ?c schema:name ?curso .
+}
+ORDER BY ?discente
+</code></pre></details><div class="table-scroll"><table><thead><tr><th scope='col'>discente</th><th scope='col'>curso</th></tr></thead><tbody><tr><td>João Mendes Pereira</td><td>Sistemas de Informação</td></tr></tbody></table></div></section>
+<section class="card"><h2>Quais docentes atuam em determinada área de pesquisa?</h2><p>Seleciona a área de Dados Abertos e usa area para encontrar os docentes. O rótulo vem de skos:prefLabel.</p><p><a href="consultas/consulta03.rq">Arquivo SPARQL</a> · <a href="consultas/resultados/consulta03.csv">Resultado CSV</a></p><details><summary>Ver consulta</summary><pre><code>PREFIX acad: &lt;../ontologia.ttl#&gt;
+PREFIX schema: &lt;https://schema.org/&gt;
+PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;
+
+SELECT ?docente ?area WHERE {
+  VALUES ?a { &lt;../recursos.html#area-dados-abertos&gt; }
+  ?p a acad:Docente ;
+     schema:name ?docente ;
+     acad:area ?a .
+  ?a skos:prefLabel ?area .
+}
+ORDER BY ?docente
+</code></pre></details><div class="table-scroll"><table><thead><tr><th scope='col'>docente</th><th scope='col'>area</th></tr></thead><tbody><tr><td>Ana Martins da Silva</td><td>Dados Abertos</td></tr><tr><td>Bruno Ribeiro Costa</td><td>Dados Abertos</td></tr></tbody></table></div></section>
+<section class="card"><h2>Quais docentes e discentes participam de um mesmo projeto?</h2><p>Une instâncias de Docente e Discente pelo mesmo ProjetoPesquisa, usando participaDe nos dois lados.</p><p><a href="consultas/consulta04.rq">Arquivo SPARQL</a> · <a href="consultas/resultados/consulta04.csv">Resultado CSV</a></p><details><summary>Ver consulta</summary><pre><code>PREFIX acad: &lt;../ontologia.ttl#&gt;
+PREFIX schema: &lt;https://schema.org/&gt;
+
+SELECT ?projeto ?docente ?discente WHERE {
+  ?d a acad:Docente ;
+     schema:name ?docente ;
+     acad:participaDe ?p .
+  ?e a acad:Discente ;
+     schema:name ?discente ;
+     acad:participaDe ?p .
+  ?p a acad:ProjetoPesquisa ;
+     schema:name ?projeto .
+}
+ORDER BY ?projeto ?docente ?discente
+</code></pre></details><div class="table-scroll"><table><thead><tr><th scope='col'>projeto</th><th scope='col'>docente</th><th scope='col'>discente</th></tr></thead><tbody><tr><td>Dados Abertos Acadêmicos</td><td>Ana Martins da Silva</td><td>João Mendes Pereira</td></tr><tr><td>IA no Acervo Universitário</td><td>Bruno Ribeiro Costa</td><td>Luiza Rocha Almeida</td></tr></tbody></table></div></section>
+<section class="card"><h2>Quais são as publicações de uma docente e quem são seus coautores?</h2><p>Filtra as instâncias de Artigo pela propriedade autor ligada a Ana. OPTIONAL mantém artigos individuais e o filtro exclui Ana da coluna de coautoria.</p><p><a href="consultas/consulta05.rq">Arquivo SPARQL</a> · <a href="consultas/resultados/consulta05.csv">Resultado CSV</a></p><details><summary>Ver consulta</summary><pre><code>PREFIX acad: &lt;../ontologia.ttl#&gt;
+PREFIX schema: &lt;https://schema.org/&gt;
+
+SELECT ?publicacao ?ano ?coautor WHERE {
+  VALUES ?d { &lt;../perfis/ana-martins.html&gt; }
+  ?d a acad:Docente .
+  ?p a acad:Artigo ;
+     schema:name ?publicacao ;
+     acad:ano ?ano ;
+     acad:autor ?d .
+  OPTIONAL {
+    ?p acad:autor ?outro .
+    FILTER(?outro != ?d)
+    ?outro schema:name ?coautor .
+  }
+}
+ORDER BY ?ano ?publicacao ?coautor
+</code></pre></details><div class="table-scroll"><table><thead><tr><th scope='col'>publicacao</th><th scope='col'>ano</th><th scope='col'>coautor</th></tr></thead><tbody><tr><td>Integração de dados acadêmicos com RDF</td><td>2024</td><td>Bruno Ribeiro Costa</td></tr><tr><td>Vocabulários para diretórios acadêmicos</td><td>2025</td><td>—</td></tr></tbody></table></div></section>
+<section class="card"><h2>Quais pessoas estão vinculadas a uma unidade acadêmica específica?</h2><p>O caminho (departamento|curso)/unidade chega ao Instituto de Ciências Exatas a partir das duas categorias de perfil.</p><p><a href="consultas/consulta06.rq">Arquivo SPARQL</a> · <a href="consultas/resultados/consulta06.csv">Resultado CSV</a></p><details><summary>Ver consulta</summary><pre><code>PREFIX acad: &lt;../ontologia.ttl#&gt;
+PREFIX schema: &lt;https://schema.org/&gt;
+
+SELECT ?pessoa ?unidade WHERE {
+  VALUES ?u { &lt;../recursos.html#unidade-exatas&gt; }
+  ?p schema:name ?pessoa ;
+     (acad:departamento|acad:curso)/acad:unidade ?u .
+  ?u a acad:Unidade ;
+     schema:name ?unidade .
+}
+ORDER BY ?pessoa
+</code></pre></details><div class="table-scroll"><table><thead><tr><th scope='col'>pessoa</th><th scope='col'>unidade</th></tr></thead><tbody><tr><td>Ana Martins da Silva</td><td>Instituto de Ciências Exatas</td></tr><tr><td>Bruno Ribeiro Costa</td><td>Instituto de Ciências Exatas</td></tr><tr><td>João Mendes Pereira</td><td>Instituto de Ciências Exatas</td></tr></tbody></table></div></section>
+  </main>
+  <footer class="site-footer">Trabalho de Web Semântica · Os perfis são fictícios.</footer>
+</body>
+</html>
